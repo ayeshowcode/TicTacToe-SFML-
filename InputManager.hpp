@@ -1,3 +1,4 @@
+//InputManager.hpp
 #pragma once
 #include<SFML/Graphics.hpp>
 namespace Ash
@@ -7,6 +8,7 @@ namespace Ash
 	public:
 		InputManager(){ }
 		~InputManager(){ }
+
 		bool isSpriteClicked(sf:: Sprite object, sf:: Mouse:: Button button, sf:: RenderWindow &window);
 		sf::Vector2i GetMousePosition(sf::RenderWindow &window);
 	};

@@ -1,3 +1,4 @@
+//SplashMachine.cpp
 #include "StateMachine.hpp"
 namespace Ash
 {
@@ -24,7 +25,7 @@ namespace Ash
 			}
 			this->_isRemoving = false;
 		}
-		if (!this->_isAdding)
+		if (this->_isAdding)
 		{
 			if (!this->_states.empty())
 			{
@@ -47,5 +48,4 @@ namespace Ash
 	{
 		return this->_states.top();
 	}
-
 }

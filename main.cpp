@@ -1,10 +1,9 @@
-#include <SFML/Graphics.hpp>
-
-#include<iostream>
-
+//main.cpp
+#include "Definitions.hpp"
 #include "Game.hpp"
+
 int main()
 {
-    Ash::Game(800, 600, "NameOfGame");
+    Ash::Game(SCREEN_WIDTH, SCREEN_HEIGHT, "Tic-Tac-Toe");
     return 0;
 }

@@ -1,6 +1,6 @@
+//AssetManager.hpp
 #pragma once
 #include<map>
-#include<iostream>
 #include<SFML/Graphics.hpp>
 
 namespace Ash
@@ -16,7 +16,7 @@ namespace Ash
 
 
 		void LoadFont(std::string name, std::string filename);
-		sf::Font& GetFont(std::string name);
+		sf::Font &GetFont(std::string name);
 
 	private:
 		std::map <std::string, sf::Texture> _textures;

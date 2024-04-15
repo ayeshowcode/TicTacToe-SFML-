@@ -1,3 +1,4 @@
+//StateMachine.hpp
 #pragma once
 #include <memory>
 #include <stack>
@@ -19,7 +20,6 @@ namespace Ash {          //   !--> name of the class
 		std::stack<StateRef> _states;
 		StateRef _newState;
 		bool _isRemoving;
-		bool _isAdding;
-		bool _isReplacing;
+		bool _isAdding, _isReplacing;
 	};
 }

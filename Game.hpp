@@ -1,3 +1,4 @@
+//Game.hpp
 #pragma once
 
 #include<memory>
@@ -25,7 +26,7 @@ namespace Ash
 		const float dt = 1.0f / 60.0f; // frame rate...update:  60 times per second
 		sf::Clock _clock;
 
-		GameDataRef _data = std::make_shared <GameData>();
+		GameDataRef _data = std::make_shared<GameData>();
 		void Run();
 	};
 }
