@@ -5,6 +5,9 @@
 #include <iostream>
 
 #include "Definitions.hpp"
+
+#include "MainMenuState.hpp"
+ 
 namespace Ash
 {
 	SplashState::SplashState(GameDataRef data) : _data(data)
@@ -35,7 +38,8 @@ namespace Ash
 		if (this->_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
 		{
 			// switch to the main menu
-			std::cout << "Go to the main menu" << std::endl;
+			this->_data->machine.AddState(StateRef(new MainMenuState(_data)), true);
+
 		}
 	}
 	void SplashState::Draw(float dt)

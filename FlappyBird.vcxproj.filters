@@ -32,6 +32,9 @@
     <ClCompile Include="Definitions.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="State.hpp">
@@ -50,6 +53,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SplashState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
