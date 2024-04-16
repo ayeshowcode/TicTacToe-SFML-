@@ -2,6 +2,8 @@
 #include "MainMenuState.hpp"
 #include "Definitions.hpp"
 
+#include "GameState.hpp"
+
 #include<iostream>
 
 namespace Ash
@@ -41,7 +43,7 @@ namespace Ash
 			}
 			if (this->_data->input.isSpriteClicked(this->_playButton, sf::Mouse::Left, this->_data->window))
 			{
-				std::cout << "Go to game Screen" << std::endl;
+				this->_data->machine.AddState(StateRef(new GameState(_data)), true);
 			}
 		}
 	}
