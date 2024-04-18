@@ -2,6 +2,7 @@
 #include "GameState.hpp"
 #include "Definitions.hpp"
 
+#include "PauseState.hpp"
 #include<iostream>
 
 namespace Ash
@@ -36,7 +37,7 @@ namespace Ash
 			}
 			if (this->_data->input.isSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 			{
-				std::cout << "pause the game" << std::endl;
+				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
 		}
 	}
