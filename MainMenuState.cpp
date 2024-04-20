@@ -1,3 +1,5 @@
+//MainMenuState.cpp
+
 #include<sstream>
 #include "MainMenuState.hpp"
 #include "Definitions.hpp"
@@ -25,10 +27,13 @@ namespace Ash
 		this->_title.setTexture(this->_data->assets.GetTexture("Game Title"));
 
 		this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), 
-			(SCREEN_HEIGHT / 2)- (this->_playButtonOuter.getGlobalBounds().height / 2));
+			(SCREEN_HEIGHT / 2)- (this->_playButton.getGlobalBounds().height / 2));
 
-		this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2),
-			(this->_playButtonOuter.getGlobalBounds().height * 0.1));
+		this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2),
+			(SCREEN_HEIGHT / 2) - (this->_playButtonOuter.getGlobalBounds().height / 2));
+
+		this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2),
+			(this->_title.getGlobalBounds().height * 0.1));
 
 	}
 

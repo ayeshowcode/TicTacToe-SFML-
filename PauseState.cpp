@@ -21,8 +21,8 @@ namespace Ash
 
 		
 		this->_background.setTexture(this->_data->assets.GetTexture("Pause Background"));
-		this->_background.setTexture(this->_data->assets.GetTexture("Resume Button"));
-		this->_background.setTexture(this->_data->assets.GetTexture("Home Button"));
+		this->_resumeButton.setTexture(this->_data->assets.GetTexture("Resume Button"));
+		this->_homeButton.setTexture(this->_data->assets.GetTexture("Home Button"));
 
 		
 		this->_resumeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_resumeButton.getLocalBounds().width / 2),

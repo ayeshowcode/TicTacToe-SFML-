@@ -49,8 +49,3 @@ namespace Ash
 		this->_data->window.display();
 	}
 }
-
-
-
-
-

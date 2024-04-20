@@ -41,7 +41,6 @@ namespace Ash
 			this->_states.push(std::move(this->_newState));
 			this->_states.top()->init();
 			this->_isAdding = false;
-		
 		}
 	}
 	StateRef& StateMachine::GetActiveState()
