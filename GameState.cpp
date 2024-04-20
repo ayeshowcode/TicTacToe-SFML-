@@ -4,6 +4,9 @@
 #include "Definitions.hpp"
 
 #include "PauseState.hpp"
+
+#include "GameOverState.hpp"
+
 #include<iostream>
 
 namespace Ash
@@ -38,7 +41,10 @@ namespace Ash
 			}
 			if (this->_data->input.isSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 			{
-				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
+				//this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
+
+				this->_data->machine.AddState(StateRef(new GameoverState(_data)), true);
+
 			}
 		}
 	}

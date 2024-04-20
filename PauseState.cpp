@@ -4,7 +4,7 @@
 
 #include "GameState.hpp"
 
-#include "PauseState.h"
+#include "PauseState.hpp"
 #include<iostream>
 
 namespace Ash
