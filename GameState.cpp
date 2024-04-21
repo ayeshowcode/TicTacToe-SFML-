@@ -2,9 +2,8 @@
 #include<sstream>
 #include "GameState.hpp"
 #include "Definitions.hpp"
-
+#include "MainMenuState.hpp"
 #include "PauseState.hpp"
-
 #include "GameOverState.hpp"
 
 #include<iostream>
@@ -21,12 +20,29 @@ namespace Ash
 		turn = PLAYER_PIECE;
 
 		this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
+		this->_data->assets.LoadTexture("Grid Sprite", GRID_SPRITE_FILEPATH);
+		this->_data->assets.LoadTexture("X Piece", X_PIECE_FILEPATH);
+		this->_data->assets.LoadTexture("O Piece", O_PIECE_FILEPATH);
 
 		_background.setTexture(this->_data->assets.GetTexture("Background"));
 		_pauseButton.setTexture(this->_data->assets.GetTexture("Pause Button"));
+		_gridSprite.setTexture(this->_data->assets.GetTexture("Grid Sprite"));
+
 
 		_pauseButton.setPosition(this->_data->window.getSize().x -_pauseButton.getLocalBounds().width,
 			_pauseButton.getPosition().y); 
+		_gridSprite.setPosition(SCREEN_WIDTH / 2 - (_gridSprite.getGlobalBounds().width / 2),
+			SCREEN_HEIGHT / 2 - (_gridSprite.getGlobalBounds().height / 2));
+		
+
+		initGridPieces();
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				gridArray[i][j] = EMPTY_PIECE;
+			}
+		}
 	}
 
 
@@ -41,10 +57,7 @@ namespace Ash
 			}
 			if (this->_data->input.isSpriteClicked(this->_pauseButton, sf::Mouse::Left, this->_data->window))
 			{
-				//this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
-
-				this->_data->machine.AddState(StateRef(new GameoverState(_data)), true);
-
+				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
 		}
 	}
@@ -60,9 +73,31 @@ namespace Ash
 
 		this->_data->window.draw(this->_background);
 		this->_data->window.draw(this->_pauseButton);
+		this->_data->window.draw(this->_gridSprite);
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				this->_data->window.draw(this->_gridPieces[i][j]);
+			}
+		}
+
 
 		this->_data->window.display();
-
-
+	}
+	void GameState::initGridPieces()
+	{
+		sf::Vector2u tempSpriteSize = this->_data->assets.GetTexture("X Piece").getSize();
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				_gridPieces[i][j].setTexture(this->_data->assets.GetTexture("X Piece"));
+				_gridPieces[i][j].setPosition(_gridSprite.getPosition().x + (tempSpriteSize.x * i) - 7,
+					_gridSprite.getPosition().y + (tempSpriteSize.y * j) - 7);
+				_gridPieces[i][j].setColor(sf::Color(255, 255, 255, 255));
+			}
+		}
 	}
 }
