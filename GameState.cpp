@@ -59,6 +59,10 @@ namespace Ash
 			{
 				this->_data->machine.AddState(StateRef(new PauseState(_data)), false);
 			}
+			else if (this->_data->input.isSpriteClicked(this->_gridSprite, sf::Mouse::Left, this->_data->window))
+			{
+				this->checkAndPlacePiece();
+			}
 		}
 	}
 
@@ -69,7 +73,7 @@ namespace Ash
 
 	void GameState::Draw(float dt)
 	{
-		this->_data->window.clear();
+		this->_data->window.clear(sf::Color :: Red);
 
 		this->_data->window.draw(this->_background);
 		this->_data->window.draw(this->_pauseButton);
@@ -94,10 +98,66 @@ namespace Ash
 			for (int j = 0; j < 3; j++)
 			{
 				_gridPieces[i][j].setTexture(this->_data->assets.GetTexture("X Piece"));
+
 				_gridPieces[i][j].setPosition(_gridSprite.getPosition().x + (tempSpriteSize.x * i) - 7,
 					_gridSprite.getPosition().y + (tempSpriteSize.y * j) - 7);
-				_gridPieces[i][j].setColor(sf::Color(255, 255, 255, 255));
+
+				_gridPieces[i][j].setColor(sf::Color(255, 255, 255, 0));
 			}
+		}
+	}
+
+	void GameState:: checkAndPlacePiece()
+	{
+		sf::Vector2i touchPoint = this->_data->input.GetMousePosition(this->_data->window);
+		sf::FloatRect gridSize = _gridSprite.getGlobalBounds();
+		sf::Vector2f gapOutsideOfGrid = sf::Vector2f((SCREEN_WIDTH - gridSize.width )/ 2, (SCREEN_HEIGHT - gridSize.height )/ 2);
+		sf::Vector2f gridLocalTouchPos = sf::Vector2f(touchPoint.x - gapOutsideOfGrid.x, touchPoint.y - gapOutsideOfGrid.y);
+		sf::Vector2f gridSectionSize = sf::Vector2f(gridSize.width / 3, gridSize.height / 3);
+
+		int col, row;
+		// check which column the user has clicked 
+		if (gridLocalTouchPos.x < gridSectionSize.x) // first column
+		{
+			col = 1;
+		}
+		else if (gridLocalTouchPos.x < gridSectionSize.x * 2) // second column
+		{
+			col = 2;
+		}
+		else if (gridLocalTouchPos.x < gridSize.width) // third column
+		{
+			col = 3;
+		}
+		 
+		// check which row the user has clicked 
+		if (gridLocalTouchPos.y < gridSectionSize.y) // first row 
+		{
+			row = 1;
+		}
+		else if (gridLocalTouchPos.y < gridSectionSize.y * 2) // second row 
+		{
+			row = 2;
+		} 
+		else if (gridLocalTouchPos.y < gridSize.height) // third row 
+		{
+			row = 3;
+		}
+
+		if (gridArray[col - 1][row - 1] == EMPTY_PIECE)
+		{
+			gridArray[col - 1][row - 1] = turn;
+			if (PLAYER_PIECE == turn)
+			{
+			_gridPieces[col - 1][row - 1].setTexture(this->_data->assets.GetTexture("X Piece"));
+			turn = AI_PIECE;
+			}
+			else if (AI_PIECE == turn)
+			{
+				_gridPieces[col - 1][row - 1].setTexture(this->_data->assets.GetTexture("O Piece"));
+				turn = PLAYER_PIECE;
+			}
+			_gridPieces[col - 1][row - 1].setColor(sf:: Color(255, 255, 255, 255));
 		}
 	}
 }

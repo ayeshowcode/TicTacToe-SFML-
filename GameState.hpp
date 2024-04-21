@@ -22,6 +22,7 @@ namespace Ash
 
 	private:
 		void initGridPieces();
+		void checkAndPlacePiece();
 
 		GameDataRef _data;
 
