@@ -27,7 +27,7 @@
 #define O_PIECE_FILEPATH "Resources/res/O.png"
 
 #define X_WINNING_PIECE_FILEPATH "Resources/res/X Win.png"
-#define O_WINNING_PIECE_FILEPATH "Resources/res/0 Win.png"
+#define O_WINNING_PIECE_FILEPATH "Resources/res/O Win.png"
 
 #define GRID_SPRITE_FILEPATH "Resources/res/Grid.png"
 

@@ -17,7 +17,6 @@ namespace Ash
 		return this->_textures.at(name);
 	}
 
-
 	void AssetManager::LoadFont(std::string name, std::string fileName)
 	{
 		sf::Font font;
